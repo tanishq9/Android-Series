@@ -1,6 +1,7 @@
 package com.example.motivation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -33,23 +35,23 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.QuoteHolder>
 
     @Override
     public void onBindViewHolder(@NonNull QuoteAdapter.QuoteHolder holder, int position) {
-        Quote quote=quoteArrayList.get(position);
+        final Quote quote=quoteArrayList.get(position);
         Log.e("TAG",quote.getImageUrl());
-        Picasso.get().load(quote.getImageUrl())
+        Glide.with(context)
+                .load(quote.getImageUrl())
                 .placeholder(R.drawable.progress_animation)
                 .error(R.drawable.no_wifi)
-                .networkPolicy(NetworkPolicy.OFFLINE)//use this for offline support
-                .into(holder.imageView, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        Log.e("TAG","Image Loaded.");
-                    }
+                .into(holder.imageView);
 
-                    @Override
-                    public void onError(Exception e) {
-                        Log.e("TAG",e.getMessage());
-                    }
-                });
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Open new Activity
+                Intent intent=new Intent(context,QuoteActivity.class);
+                intent.putExtra("key",quote.getImageUrl());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
