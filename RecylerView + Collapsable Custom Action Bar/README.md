@@ -17,7 +17,7 @@
   <a href="https://www.youtube.com/watch?v=SMrB97JuIoM">Referred resource 2</a>
 </p>
 
-### Made with :heart: by Tanishq Saluja 
+##### Made with :heart: by Tanishq Saluja 
 
 
 
