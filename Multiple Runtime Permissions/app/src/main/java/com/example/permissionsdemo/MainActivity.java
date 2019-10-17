@@ -29,9 +29,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                        &&
+                        ContextCompat.checkSelfPermission(MainActivity.this,
+                                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+                        &&
+                        ContextCompat.checkSelfPermission(MainActivity.this,
+                                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
+
+
+                ) {
                     // Do some work
-                    Toast.makeText(MainActivity.this, "Ok Granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Granted Already", Toast.LENGTH_SHORT).show();
                 } else {
                     requestStoragePermission();
                 }
@@ -43,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             new AlertDialog.Builder(this)
                     .setTitle("Permission Needed")
-                    .setMessage("This permission is needed because of ...")
+                    .setMessage("These permission are needed because of ..(some reason)..")
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, CODE);
+                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA}, CODE);
                         }
                     })
                     .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -60,16 +69,19 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         } else {
             // request permission
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA}, CODE);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Permission Granted.", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 Toast.makeText(this, "Permission Denied.", Toast.LENGTH_SHORT).show();
             }
         }
