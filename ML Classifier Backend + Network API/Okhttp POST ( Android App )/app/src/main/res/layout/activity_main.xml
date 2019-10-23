@@ -37,56 +37,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Pregnancies"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <EditText
                 android:id="@+id/et2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Glucose"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <EditText
                 android:id="@+id/et3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="BloodPressure"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <EditText
                 android:id="@+id/et4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="SkinThickness"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <EditText
                 android:id="@+id/et5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Insulin"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <EditText
                 android:id="@+id/et6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="BMI"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <EditText
                 android:id="@+id/et7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="DiabetesPedigreeFunction"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <EditText
                 android:id="@+id/et8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Age"
-                android:inputType="number" />
+                android:inputType="numberDecimal|number" />
 
             <Button
                 android:id="@+id/btn"
