@@ -63,17 +63,14 @@ Always keep your local copy of repository updated with the original repository.
 Before making any changes and/or in an appropriate interval, run the following commands *carefully* to update your local repository.
 
 ```sh
-# Fetch all remote repositories and delete any deleted remote branches
-git fetch --all --prune
-
-# Switch to `master` branch
-git checkout master
-
-# Reset local `master` branch to match `upstream` repository's `master` branch
-git reset --hard upstream/master
-
-# Push changes to your forked `Android-Series` repo
-git push origin master
+    # Fetch all remote repositories and delete any deleted remote branches
+    git fetch upstream
+    # Switch to `master` branch
+    git checkout master
+    # merge the contents to our local repository's master
+    git merge upstream/master
+    # push the changes to your forked `Android-Series` repo
+    git push origin master
 ```
 
 ### 5. Ready Steady Go... :turtle: :rabbit2:
