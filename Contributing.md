@@ -72,7 +72,7 @@ git checkout master
 # Reset local `master` branch to match `upstream` repository's `master` branch
 git reset --hard upstream/master
 
-# Push changes to your forked `Plant_Disease_Detection` repo
+# Push changes to your forked `Android-Series` repo
 git push origin master
 ```
 
